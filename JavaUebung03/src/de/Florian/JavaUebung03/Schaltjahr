@@ -1,0 +1,33 @@
+package de.Florian.JavaUebung03;
+
+import javax.swing.JOptionPane;
+
+public class Schaltjahr {
+	private static boolean istSchaltjahr(int jahr) {
+		if (jahr % 4 ==  0) {
+			if (jahr % 100 == 0 && jahr % 400 != 0 ) {
+				return false;
+			} else return true;
+		} else return false;
+		
+	}
+
+	public static void main(String[] args) {
+		int int_JahresZahl;
+
+		
+		String input = JOptionPane.showInputDialog("Geben Sie eine Zahl ein!");
+		try {
+			int_JahresZahl = Integer.parseInt(input);
+		} catch (NumberFormatException e) {
+			JOptionPane.showMessageDialog(null, "Bitte geben Sie einee Ganze Zahl ein!");
+			return;
+		}
+		
+		if (istSchaltjahr(int_JahresZahl)) {
+			JOptionPane.showMessageDialog(null, "Das Jahr " + int_JahresZahl + " ist ein Schaltjahr!");
+		} else {
+			JOptionPane.showMessageDialog(null, "Das Jahr " + int_JahresZahl + " ist kein Schaltjahr!");
+		}
+	}
+}
