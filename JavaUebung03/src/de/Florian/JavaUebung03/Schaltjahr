@@ -3,6 +3,13 @@ package de.Florian.JavaUebung03;
 import javax.swing.JOptionPane;
 
 public class Schaltjahr {
+
+		
+		/* "Ist die Zahl duch 4 teilbar, dann ist es ein Schlatjahr,
+		 *  außer die Jahreszahl ist gleichzeitig duch 100 teibar,
+		 *  dann ist das Jahr kein Schaltjahr,
+		 *  außer die Jahreszahl ist gleichzeitig durch 400 teilbar"
+		 */
 	private static boolean istSchaltjahr(int jahr) {
 		if (jahr % 4 ==  0) {
 			if (jahr % 100 == 0 && jahr % 400 != 0 ) {
@@ -17,6 +24,8 @@ public class Schaltjahr {
 
 		
 		String input = JOptionPane.showInputDialog("Geben Sie eine Zahl ein!");
+		
+		//Wandelt den input in Integer um 
 		try {
 			int_JahresZahl = Integer.parseInt(input);
 		} catch (NumberFormatException e) {
