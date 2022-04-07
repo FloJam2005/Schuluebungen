@@ -1,4 +1,4 @@
-package Schuluebungen/QuadratischeFunktionen;
+package main.de.Florian.QuadratischeFunktion;
 
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
@@ -32,6 +32,11 @@ public class NullstellenQuadratischerFunktionen {
 		JDialog dialog = pane.createDialog(null,  "Berechnung");
 		dialog.setVisible(true);
 		
+		if (input_a.getText().isEmpty()&&input_b.getText().isEmpty()&& input_c.getText().isEmpty()) {
+			return;
+			
+			//Überprüft ob die Eingaben leer sind z.B. wenn auf cancel gedrückt wird. 
+		}
 		
 		try {
 			a = Double.parseDouble(input_a.getText().replace(',', '.'));
@@ -39,10 +44,10 @@ public class NullstellenQuadratischerFunktionen {
 			c = Double.parseDouble(input_c.getText().replace(',', '.'));
 			
 			funktion = a + "x^2+"+ b + "x+" + c;
+			funktion = funktion.replace('.', ',');
 			
 		} catch (NumberFormatException e) {
-			//Irgendwas
-			System.exit(0);
+			JOptionPane.showMessageDialog(null, "Bitte nur Zahlen eingeben!");
 			return;
 		}
 		
@@ -62,18 +67,18 @@ public class NullstellenQuadratischerFunktionen {
 				lsg2 = -p/2 - w;
 				
 				JOptionPane.showMessageDialog(null, "Die Funktion " + funktion + " hat die Nullstellen, " 
-				+ Math.round(lsg1 * 100.0)/100.0 +" & " + Math.round(lsg2 * 100.0)/100.0);
+				+ lsg1 + " & " + lsg2);
+				
+				
 				
 				
 				
 			} else {
 				
-				JOptionPane.showMessageDialog(null, "Die Funktion " + funktion + " hat die Nullstelle " + Math.round(-p/2 * 100.0)/100.0);
+				JOptionPane.showMessageDialog(null, "Die Funktion " + funktion + " hat die Nullstelle " + -p/2);
 				
 			}
-			System.exit(0);
-			
-			System.exit(0);
+			return;
 			
 		} else {
 			
@@ -84,7 +89,7 @@ public class NullstellenQuadratischerFunktionen {
 					"Trotzdem Fortfahren?", JOptionPane.YES_NO_OPTION);
 			
 			if (selection != 0) {
-				System.exit(0);
+				return;
 			}
 			
 			//f(x) = bx + c 
@@ -103,7 +108,7 @@ public class NullstellenQuadratischerFunktionen {
 					JOptionPane.showMessageDialog(null, "Die Funktion f(x) = " + b + "x+" + c+ " hat unendlich viele 0 Stellen!");
 				}
 			}
-			System.exit(0);
+			
 		}	
 	}
 }
