@@ -100,11 +100,13 @@ public class FeldGUI2 extends JFrame {
 		JTextArea textAreaFeld = new JTextArea();
 		textAreaFeld.setAutoscrolls(true);
 		textAreaFeld.setBounds(20, 43, 209, 355);
+		textAreaFeld.setEditable(false);
 		//JScrollPane scrollPane = new JScrollPane(textAreaFeld);
 		contentPane.add(textAreaFeld);
 		
 		JTextArea textAreaOutput = new JTextArea();
 		textAreaOutput.setBounds(20, 409, 333, 62);
+		textAreaOutput.setEditable(false);
 		contentPane.add(textAreaOutput);
 		
 		
