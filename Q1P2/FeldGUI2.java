@@ -191,7 +191,8 @@ public class FeldGUI2 extends JFrame {
 		area.setText("");
 		for(int i =0; i<feld.length; i++)
 		{
-			area.append(i + ": " + feld[i] + "\n");
+			String zahl = (i < 10)? "0"+i : ""+i;
+			area.append(zahl + ": " + feld[i] + "\n");
 		}
 	}
 	
