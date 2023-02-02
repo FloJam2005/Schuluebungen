@@ -194,6 +194,35 @@ public class Feld {
 		return sorted;
 	}
 	
+	public static int fakultät(int n)
+	{	
+		return (n == 0)? 1 : n*fakultät(n-1);
+	}
+	
+	public static int fakultätIterativ(int n)
+	{
+		int result = 1;
+		
+		do
+		{
+			result = result * n;
+			n--;
+		} while (n != 0);
+		
+		return result;
+	}
+	
+	public static int fakultätFor(int n)
+	{
+		int result = 1;
+		for (int i = n; i>0; i--)
+		{
+			result *= i;
+		}
+		return result;
+	}
+	
+	
 	
 	
 	
