@@ -1,0 +1,329 @@
+E - Datenbanken
+
+-> relationale Datenbanken zum Speichern großer Informationsmengen (big data) 
+
+	E.1 Methematische Grundlagen ("Relationen Algebra")
+		E.1.1 Einiges zu Mengen und Operationen auf Mengen
+			Def: Eine Menge ist eine Zusammenfassung wohunterschiedener Objekte der Realität oder unserer Anschauung (Elemente) zu einem Granzen (-> Menge)
+			- in Mengen besitzen keien Reihenfolge {Hans; Willy} = {Willy; Hans}
+			- ein Objekt kommt nur einmal in einer Menge vor {5;3;3;7;5} = {3;5;7} 	
+			Zeichensprache:
+				Herr Bittner ∈ Leher Hessens  "Element von ", dh. gehört dazu
+				Herr Bittner ∉ Kultusminister der BRD
+				|{7;5;8}| = 3   || ... Kardinalszahl oder Mächtigkeit
+				|ℕ| =  ∞
+				Q ist echte Teilmenge von R : Q⊂R Für alle Elemente von Q gilt. Sie sind auch Elemente von R und R Besitz mind ein Element mehr.
+				M ist Teilmenge von N: x ∈ N in Zeichen M⊆N
+
+			Operationen auf Mengen
+				1. Mengen
+					Kreuzprodukt {1,2} * {3, 4} = {(1;3); (1; 4); (2,3); (2;4)}  
+					Vereinigung V Von A und B A u B x∈AuB <=> x∈A v x∈B x gehört zu A vereinigt mti B, gdw.	 x in A oder x in B vorkommt.
+					Durchschnitt D von A und B A n B x∈AnB <=> x∈A^x∈B x gehört zu A geschnitten mit B, gdw. x kommt in A und B vor.
+					Differenzmenge A\B von A und B x∈A\B <=> x∈A^x∉B
+					Potenzmenge P(A) von A Menge aller Teilmengen von A P(A) = {P i |P i; ⊂A}
+					
+					Bsp:
+						A = {1;2;3;5;7;9} B = {0;2;4;6;8} c = {3;5;7}
+						
+						A u B = {1;2;3;5;7;9;2;4;6;8} = {1;2;3;4;5;6;7;8;9}
+						A n B = {2}
+						A\B = {1;3;5;7;9}
+						P(C) = {{};{3};{5};{7};{3;5};{3;7};{5;7};{3;5;7}} |P(c)| = 2^|c| 
+
+
+Relationen sind "sinnvolle Tupel" aus einem Kreuzprodukt
+
+Def: 
+Relation Eine Relation R auf den Mengen M1, M2, M3, ...; Mn ist eine Teilmenge ders Kartesischen Produkts M1*M2*M3*...*Mn
+
+Relationen und Tabellen
+Relatioen								Tabellen ( = Relation + Tabellenkopf)
+	Reihfolge fest								Reihenfolge (der Spalten) beliebig wählbar,
+	keine Null werte		--für "Datenbanken" ---> 		da mit Kopf gekennzeichnet 
+	streng math. Definition							NULL-Werte müssen durch das Design der Tabelle verhindert werden
+	keine Reihenfolge (der Tupel)						praktisch handhabbar
+										"natürliche" Reihenfolge durch (virtuelle) Zeilennummer
+
+		E.2 Datenbanken
+			E.2.21 Einordnung von Datenbanken
+				
+			
+									 
+Schichtenmodell
+
+
+
+Hardware -> Betriebssystem -> Anwendung
+-> DX 
+-> Sicherheit
+-> Vereinfachung in der Kommuniktion
+-> Langsam da es alle Daten duch alle Schichten durchgeben muss. 
+-> Nimmt die Komplexität
+
+
+Anforderungen an ein BS 
+	Ein DBS muss:
+		Daten persistent (dauerhaft) speichern
+		Datenschuth, sicherheit und integrität gewährleisten
+		Daten effizient verwalten
+		Auswahl, Sucht und Verwaltungsfunktionen
+		Datenbankmodell bereithalten
+
+
+
+E.3 Das Entity - Relationsship - Modell (ER-Modell)
+	E.3.1 Datenbankmodelle
+									Datenbankmodell	
+									- Darstellung und Erfassung der 
+									  Informationsstruktur, nicht 
+									  der Information selbst
+										    |
+					+-------------------------------------------+-------------------------------------------+
+					|											|
+				 Entwurfsmodell									        Realisierungsmodell
+			      (Abstraktes Modell)             |----------Implementierung ---------->			 (Konkretes Modell)
+			      [vlg. Klassenmodell]									in ein bestimmtes DBS
+				    ER-Modell								   (relational, netzwerk, objektorientiert...)
+	
+				
+	E.3.2 ER-Modell	
+		CHEN (1976)
+		- heute praktisch das Stadardmodell für die Datenbankentwicklung
+
+			Entities --> Objekte der realen oder Vorstellungswelt, über die Information gespeichert werden sollen
+
+			Relations --> Beziehungen zwischen den Entitys
+
+			Attribute --> Eigenschaften von Entitys oder Realtions bzw. gibt auch Optionale Attribute
+			
+			Entitätstypen (Ähnlich wie Klassen)
+
+
+			Vererbung --> IST-Beziehung      
+
+			^
+			|Generalisierung  |  Speziefiesierung
+			|		  |
+					  \/	
+				
+		Grafische Darstellung des ER-Modells wird ER-Diagramm (ERD) genannt
+
+
+	E.3.3	Anwendung des ER-Modells
+
+		Modellierung der Datenstrukturen
+			
+			|	|  Hoher Abstraktionsgrad    --> ER-Modell (Abstraktes Modell)
+								 BOTTOM-UP-Synthese
+		     TOP-DOWN-Modell
+Kunde --- Bedeutung 
+der Begriffe --> SEMANTIK [Semantisches Modell] 
+
+			|	|
+		       \|       |/
+			\       / Kokreter Datenbankentwurf 	
+			 \     /
+                          \   /
+                           \ /
+			    V
+		      Tabellenentwurf 			    --> Relationale DB (Anwendungsmodell)
+
+	
+
+		Schritt 1: Entity - Analyse				       +--------+
+			- alle Obj. identifizieren -> O-Typen =>Entitäts-Typen |	|
+									       +--------+
+				- gibt es Generalisierungen
+				Attributwerte aufschreiben, bei Megen beispielhaft ----> Attribut-Typen antragen -> Schlüssel festlegen (ggf Surogat-Schlüssel) 
+		
+		Schritt 2: Relationsship - Analyse								     
+			
+			- Beziehung zw. den Entity-Typen untersuchen
+			- falls notwendig weiter beschreibende Attribute festlegen
+			- Kardinalitäten festlegen 1:N N:N 1:1
+
+
+(Nicht Klausurrelevant)
+E.4 Der Relationale Datenbankentwurf
+	E.4.1 Grundbegriffe									Relationenalgebra (mathematische Sicht)       Datenbankanwender (Praktische Informatik Sicht)
+		
+		SELECT * FROM Personen --------------------------------------------------------- Relationenname ------------------------------- Tabellenname
+							     ----------------------------------- Attribut	------------------------------- Attribute/Eigenschaften
+							    /	
+			+------+------------+-----------+-------+-----------+		
+			|  ID  |  Nachname  |  Vorname  |  PLZ  |  Strasse  |------------------- Relationenschema ----------------------------- Tabellenkopf
+			+------+------------+-----------+-------+-----------+
+			| 1    | Müller     | Hans      | 13184 |Vinetastr 3|------------------- Tupel  	 ------------------------------ Datensatz 
+			| 2    | Ringel     | Wallpurgia| 27258 | Am Wall 5 | 	
+			| 3    |            |           |       |           | 
+			| 4    |            |           |       |           |
+			| 5    |            |           |       |           |------------------- Alle Tupel zusammen Relation ----------------- Tabelleininhalt
+			| 6    |            |           |       |           |
+			| 7    |            |           |       |           |	
+			| 8    |            |           |       |           |
+
+
+											
+
+
+
+
+												relationales Modell
+													|
+									+-------------------------------+-------------------------------+
+									|				|				|
+								 Daten werden in Form 		Operationen auf Daten		Tabellen müssen immer
+								von Tabellen betrachtet		sind Operationen auf 		bestimmten Integritäts-
+												Tabellen und liefern 		kriterien entsprechen
+												wieder Tabellen
+
+								Struktureller Aspekt		Manipulativer Aspekt	
+
+		ALLES IST TABELLE
+
+
+		Primärschlüssel (Primary key - PK):
+			Der Primärschlüssel ist ein Attribut oder eine Kombination aus Attributen, die einen Datensatz eindeutig beschreibt. Diese Eindeutigkeit muss stets gewährleistet sein, egal wie viele Datensätze die Tabelle enthält 
+
+			Bei zusammengesetzten Schlüsseln muss die eindeutigkeit verloren gehen, sobald man ein Attribut aus der Kombination entfernt: Die Attribut Kombination ist dan Minimal (für Florian Irreduzibilität)
+			
+
+		Fremdschlüssel (Foreign key - FK):
+			erwendet eine Tabelle als Attribut den Primärschlüssel einer anderen Tabelle, so spricht man von einem Fremdschlüssel. 
+		
+		Bedingungen (constvaints):
+			Um zum Beispiel Probleme mit Schlüsselwerten oder Nullwerte zu vermeiden, kann man Bedingungen vereinbaren. Derartige Bedingungen nennt man Constrants und vereinbart sie beim Anlegen (create table) der Tabelle oder hinterher (alter table) 
+		
+		Bedingungen an einen PK:
+			Ein Primärschlüssel sollte keine Informationen enthalten die der Benutzer braucht oder Manipulieren kann. Folge man nimmt ein Zusätzliches Schlüsselfeld in die Tabelle auf. (Autowert) 
+			Ein Primärschlüssel muss ein Konstantes Attribut eines Datensatzes sein. 
+			Ein Primärschlüssel sollte möglichst einfach sein
+		
+
+		Kürzer:
+			Primärschlüssel: Eindeutige Spalte(n) zur Identifikation von Datensätzen in einer Tabelle.
+			Fremdschlüssel: Verweist auf den Primärschlüssel einer anderen Tabelle zur Herstellung von Beziehungen.
+			Bedingungen: Regeln für akzeptierte Werte in einer Tabelle.
+			Bedingungen an Primärschlüssel: Eindeutigkeit, Nicht-NULL und Unveränderlichkeit.
+
+
+
+
+
+		Bsp: 
+			Relationenschema (Abi HE 2014 B2) aus ERD
+				Produkt(NUMMER, Beichnung, Sorte, Verkaufspreis)
+				Lieferant(FIRMEMNAME, Ort, PLZ, Hausnummer, Straße)
+									    	
+				Filiale(NAME, Ort, PLZ, Hausnummer, Straße, ↑Mitarbeiter.Nummer) 	   				
+				Mitarbeiter(NUMMER, Vorname, Nachname, Gebutsdatum, Status, Wochenstunden, ↑NAME)				↑[Primärschlüssel]...FK      
+
+					 
+				hält_vor(↑Produkt.Nummer, ↑Filiale.Name, Anzahl)
+				geliefert_von(↑Lieferant.Firmenname, ↑Produkt.Nummer, Einkaufspreis, Anzahl)
+				zugeordnet_zu(↑Mitarbeiter.Nummer, ↑Filiale.Name) Ist schon in Mitarbeiter   1:1 und 1:N immer schon in die Entytätsbeschreibung
+
+E.4.2 Normalisierung von Datenbanken
+	- Ziel: 
+		Vermeidung von Redundanzen (mehrfache Abspeicherung eines Datums)
+		Effizienzsteigerung bei Operationen auf der Datenbank/relationen besser abbilden
+		Fehler bei Datenauswertung verringern / bessere Übersicht
+		Eingabefehler (Korrekturen vereinfachen)
+		Intigrität der Datenbank (PK) aufrechterhalten
+		Abfragemöglichkeit herstellen
+							
+Hauptziel: 
+			+----------------------------------------------------------------------------------------------------+
+			|						Datenbankanomalien:  				     |
+			|							|					     |
+			|		+---------------------------------------+------------------------------+	     |	
+			|		|   					|			       |	     |
+			|	Insert-Anomalie				Update-Anomalie     	       Delete-Anomalie	     |
+			|												     |	
+			+----------------------------------------------------------------------------------------------------+
+									    ||
+									    ||
+									    \/
+
+								 inkonsistente Datenbank
+
+			Die Normalisierung hat zum Ziel eine inkonsitente Danbank (aufgrund des benannten ....
+
+			unnormalsierte Form UNF 		--------------------------->		 	erste Normalform 1.NF   --------------------> zweite Normalform 2NF
+			(non-first-normal-form nfnf ~ NF²)      Attribute müssen atomar sein						Redundanzen beseitigen
+								Also kleinst möglich aufgeteilt werden:					(PK;FK)
+								Bsp: Aus Adresse wird Plz, Ort, Straße, NR				Primary und Foreign keys
+			
+
+
+
+Bsp: vom Entwurfs- zum normalisierten Realisierungsmodell
+	Ausgangslage: Anhang FeWo.png
+
+
+	Vermieter(Veieternummer(PK), Vorname, Nachname, Anschrift, Telefonnummer) -> Anschrift nicht Atomar also NF²
+	Vermieter(Vermieternummer(PK), Vorname, Nachname, Staße_Nr, ↑PLZ)
+	Orte(PLZ, Ort)
+
+	Ferienwohnung(Personen, Kategorie, Hauptsaisonpreis, Nebensaisonpreis, Gemeinde, Beschreibung, Schlafzimmmer) -> Nicht atomar
+	Ferienwohnung(Personen, Kategorie, Hauptsaisonpreis, Nebensaisonpreis, ↑PLZ)
+	Ferienwohnuhg(Objektnummer(PK), Gemeide, Beschreibung, Personenzahl,.., ↑Vermieternummer)
+
+	
+	Gast(Vorname, Nachname, Adresse, Geburtsdatum)
+	Gast(Vorname, Nachname, Straße_Nr, ↑Gemeindenummer)
+	Gemeinde(Gemeindenummer(PK), Gemeindename)
+
+	mietet(↑Gastnummer, ↑Objektnummer, Anreise, Abreise, Gesamtpreis);
+	PK(↑Gastnummer, ↑Objektnummer, Anreise)
+
+
+
+E.4.3 Von der Realität zum Relationenmodell und weiter...
+		
+		   Top-Down-Analyse
+	Realität   ---------------------------------> ER-Modell
+	(Kunde)    (Entitäten → Entitäts-Typen)		  |	
+		   (Beziehungen → Relationen-Typen)	  |
+							  |
+							  |
+							  ↓
+						  Relationenschema
+							  | 
+			   1) Normalisierung              |
+			   2) alle Tabellen mit PK        |
+			   3) restliche Tabellen	  | Optimierung (1:1; 1:n)
+							  ↓
+	Tabellen/Abfragen  <--------------- optimiertes Relationenschema	 
+			   4) Abfragen
+
+
+E.5 SQL
+	- Structured query language "strukturierte Abfragesprache"
+	
+	E.5.1 Übersicht SQL
+
+
+	SQL:
+		DRL Data Retrievel Language  | Daten auslesen
+		DML Data Manipulation Language | Daten zu bearbeiten
+		DCL Data Control Language    | Zugriffsrechte zu steuern
+		DDL Data Definition Language | Datenbankstrukturen definieren oder ändern
+
+		Quelle: http://bitly.ws/Ix3q
+
+	
+	
+	
+
+	
+			
+
+		
+		
+
+		
+		
+	 
+	
