@@ -303,6 +303,7 @@ E.5 SQL
 	- Structured query language "strukturierte Abfragesprache"
 	
 	E.5.1 Übersicht SQL
+	
 
 
 	SQL:
@@ -312,9 +313,36 @@ E.5 SQL
 		DDL Data Definition Language | Datenbankstrukturen definieren oder ändern
 
 		Quelle: http://bitly.ws/Ix3q
+	
+	E.5.2 Relationenalgebra
+	Bemerkung: !^ meint das nachgstellte als index (klein hinter der Zahl) 
+	
+	1. Projektion π
+		nimmt spalten aus der bestimmten tabelle heraus
+		Es werden nur bestimmte spalten nach der Projektion angezeigt
+		Bsp. Lehrer(Nachname, Vorname, Ort, Sraße)
+			π!^Nachname, Ort(Lehrer)
+		SELECT Nachname, Ort FROM Lehrer;
+
+	2. Selektion σ
+		
+		σ!^ Ort= Heusenstamm (Lehrer)
+		SELECT * FROM Lehrer 
+		WHERE Ort = "Heusenstamm";
 
 	
+	Bsp.: Nachname aller Lehrer aus Heusenstamm
+		
+		π!^Nachname(σ!^Ort=Heuenstamm(Lehrer))
+		
+
+		Standard
+		   ALL                               +----------,-----------+
+	SELECT -	     Attributliste -> FROM -> Tabellenname	       WHERE                
+		  DISTINCT					     Alias            Bedingung      GROUP BY -> Attributliste				ORDER BY -> Attributliste  ASC
+																HAVING -> Bedingung 				   DESC	
 	
+	BETWEEN zwischen mit Intervallgrenzen: SELECT * FROM tbl WHERE tbl.Atr BETWEEN value1 AND value2;
 	
 
 	
